@@ -1,0 +1,23 @@
+docker run -i -t \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-v ${UNAM_HOME}:${UNAM_HOME} \
+--name c1-bdd-proy-ens \
+--hostname h1-bdd-proy-ens.fi.unam \
+--expose 1521 \
+--shm-size=2gb \
+--net=bdd-proy-net \
+--ip 172.20.0.21 \
+--add-host h2-bdd-proy-aad.fi.unam:172.20.0.22 \
+-e DISPLAY=$DISPLAY bdd-ens:1.0 bash
+
+docker run -i -t \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-v ${UNAM_HOME}:${UNAM_HOME} \
+--name c2-bdd-proy-aad \
+--hostname h2-bdd-proy-aad.fi.unam \
+--expose 1521 \
+--shm-size=2gb \
+--net=bdd-proy-net \
+--ip 172.20.0.22 \
+--add-host h2-bdd-proy-ens.fi.unam:172.20.0.21 \
+-e DISPLAY=$DISPLAY bdd-ens:1.0 bash
