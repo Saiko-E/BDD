@@ -7,18 +7,29 @@ declare
 begin
     case
         when inserting then
-            /* TODO: Ajustar la regla de fragmentación exacta. Se asume un prefijo de CLAVE */
-            if substr(:new.clave, 1, 2) = 'NO' then
+            -- Regla 1: Ambas funciones (venta y taller) O zona 'NO' van al Norte (F1)
+            if (:new.es_venta = '1' and :new.es_taller = '1') or substr(:new.clave, 3, 2) = 'NO' then
                 insert into sucursal_f1(sucursal_id, es_venta, es_taller, clave, nombre, latitud, longitud, url) 
                 values (:new.sucursal_id, :new.es_venta, :new.es_taller, :new.clave, :new.nombre, :new.latitud, :new.longitud, :new.url);
-            elsif substr(:new.clave, 1, 2) = 'EA' then
-                insert into sucursal_f2(...) values (...);
-            elsif substr(:new.clave, 1, 2) = 'WE' then
-                insert into sucursal_f3(...) values (...);
-            elsif substr(:new.clave, 1, 2) = 'SO' then
-                insert into sucursal_f4(...) values (...);
+                
+            -- Regla 2: Zona 'EA' va al Este (F2)
+            elsif substr(:new.clave, 3, 2) = 'EA' then
+                insert into sucursal_f2(sucursal_id, es_venta, es_taller, clave, nombre, latitud, longitud, url) 
+                values (:new.sucursal_id, :new.es_venta, :new.es_taller, :new.clave, :new.nombre, :new.latitud, :new.longitud, :new.url);
+                
+            -- Regla 3: Zona 'WS' va al Oeste (F3)
+            elsif substr(:new.clave, 3, 2) = 'WS' then
+                insert into sucursal_f3(sucursal_id, es_venta, es_taller, clave, nombre, latitud, longitud, url) 
+                values (:new.sucursal_id, :new.es_venta, :new.es_taller, :new.clave, :new.nombre, :new.latitud, :new.longitud, :new.url);
+                
+            -- Regla 4: Zona 'SO' va al Sur (F4)
+            elsif substr(:new.clave, 3, 2) = 'SO' then
+                insert into sucursal_f4(sucursal_id, es_venta, es_taller, clave, nombre, latitud, longitud, url) 
+                values (:new.sucursal_id, :new.es_venta, :new.es_taller, :new.clave, :new.nombre, :new.latitud, :new.longitud, :new.url);
+                
+            -- Manejo de errores de fragmentación
             else
-                raise_application_error(-20010, 'El registro que se intenta insertar no cumple con el esquema de fragmentación horizontal primaria.');
+                raise_application_error(-20010, 'El registro que se intenta insertar no cumple con el esquema de fragmentación horizontal primaria de SUCURSAL.');
             end if;
 
         when deleting then

@@ -7,12 +7,14 @@ drop user if exists ilap_bdd cascade;
 create user ilap_bdd identified by ilap_bdd quota unlimited on users;
 
 grant create session, 
-      create tables, 
+      create table, 
       create sequence, 
       create procedure, 
       create view,
       create synonym, 
-      create database link
+      create database link,
+      grant create any directory,
+      create trigger
 to ilap_bdd;
 --Completar
 

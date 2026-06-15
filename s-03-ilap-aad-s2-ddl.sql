@@ -14,7 +14,7 @@
 
 CREATE TABLE LAPTOP_F2_AAD_S2(
     LAPTOP_ID                 NUMBER(10, 0)    NOT NULL,
-    LAPTOP_REPUESTO_ID        NUMBER(10, 0),
+    LAPTOP_REEMPLAZO_ID       NUMBER(10, 0),
     NUM_SERIE                 VARCHAR2(18)     NOT NULL,
     NOMBRE                    VARCHAR2(100)    NOT NULL,
     DESCRIPCION               VARCHAR2(400)    NOT NULL,

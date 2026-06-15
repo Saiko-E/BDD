@@ -1,4 +1,4 @@
-s-04-ilap-aad-s1-sinonimos.sql--@Autor: Erick Nava Santiago y Arturo Alfaro Dominguez
+--@Autor: Erick Nava Santiago y Arturo Alfaro Dominguez
 --@Descripción: Creación de sinónimos para el nodo aadbdd_s1 (Oeste)
 
 -- SUCURSAL
