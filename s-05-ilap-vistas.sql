@@ -13,13 +13,13 @@ select sucursal_id, es_venta, es_taller, clave, nombre, latitud, longitud, url f
 
 prompt Creando vista SUCURSAL_TALLER (Fragmentación Horizontal)
 create or replace view sucursal_taller as
-select sucursal_id, tel_atencion, dia_descanso from sucursal_taller_f1
+select sucursal_id, telefono_atencion, dia_descanso from sucursal_taller_f1
 union all
-select sucursal_id, tel_atencion, dia_descanso from sucursal_taller_f2
+select sucursal_id, telefono_atencion, dia_descanso from sucursal_taller_f2
 union all
-select sucursal_id, tel_atencion, dia_descanso from sucursal_taller_f3
+select sucursal_id, telefono_atencion, dia_descanso from sucursal_taller_f3
 union all
-select sucursal_id, tel_atencion, dia_descanso from sucursal_taller_f4;
+select sucursal_id, telefono_atencion, dia_descanso from sucursal_taller_f4;
 
 prompt Creando vista SUCURSAL_VENTA (Fragmentación Horizontal)
 create or replace view sucursal_venta as

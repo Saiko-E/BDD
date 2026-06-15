@@ -10,19 +10,19 @@ begin
         when inserting then
             select count(*) into v_count from sucursal_f1 where sucursal_id = :new.sucursal_id;
             if v_count > 0 then
-                insert into sucursal_taller_f1(sucursal_id, tel_atencion, dia_descanso) values (:new.sucursal_id, :new.tel_atencion, :new.dia_descanso);
+                insert into sucursal_taller_f1(sucursal_id, telefono_atencion, dia_descanso) values (:new.sucursal_id, :new.telefono_atencion, :new.dia_descanso);
             else
                 select count(*) into v_count from sucursal_f2 where sucursal_id = :new.sucursal_id;
                 if v_count > 0 then
-                    insert into sucursal_taller_f2(sucursal_id, tel_atencion, dia_descanso) values (:new.sucursal_id, :new.tel_atencion, :new.dia_descanso);
+                    insert into sucursal_taller_f2(sucursal_id, telefono_atencion, dia_descanso) values (:new.sucursal_id, :new.telefono_atencion, :new.dia_descanso);
                 else
                     select count(*) into v_count from sucursal_f3 where sucursal_id = :new.sucursal_id;
                     if v_count > 0 then
-                        insert into sucursal_taller_f3(sucursal_id, tel_atencion, dia_descanso) values (:new.sucursal_id, :new.tel_atencion, :new.dia_descanso);
+                        insert into sucursal_taller_f3(sucursal_id, telefono_atencion, dia_descanso) values (:new.sucursal_id, :new.telefono_atencion, :new.dia_descanso);
                     else
                         select count(*) into v_count from sucursal_f4 where sucursal_id = :new.sucursal_id;
                         if v_count > 0 then
-                            insert into sucursal_taller_f4(sucursal_id, tel_atencion, dia_descanso) values (:new.sucursal_id, :new.tel_atencion, :new.dia_descanso);
+                            insert into sucursal_taller_f4(sucursal_id, telefono_atencion, dia_descanso) values (:new.sucursal_id, :new.telefono_atencion, :new.dia_descanso);
                         else
                             raise_application_error(-20020, 'El registro que se intenta insertar no cumple con el esquema de fragmentación horizontal derivada. Padre no encontrado.');
                         end if;

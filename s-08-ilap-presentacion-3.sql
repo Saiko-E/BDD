@@ -40,7 +40,11 @@ delete from tipo_tarjeta_video;
 delete from tipo_procesador;
 delete from tipo_monitor;
 delete from tipo_almacenamiento;
-
+delete from ti_servicio_laptop_f1;
+delete from ti_servicio_laptop_f2;
+delete from ti_servicio_laptop_f3;
+delete from ti_servicio_laptop_f4;
+delete from ti_laptop_f5;
 Prompt => Realizando Carga de datos
 Prompt cargando tipo_tarjeta_video
 @carga-inicial/tipo_tarjeta_video.sql
@@ -80,5 +84,3 @@ Prompt cargando servicio_laptop (con datos BLOB)
 @carga-inicial/servicio_laptop-2-empty-blob.sql
 
 Prompt Carga de datos completa. Haciendo commit!
-commit;
-exit

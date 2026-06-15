@@ -13,7 +13,7 @@ grant create session,
       create view,
       create synonym, 
       create database link,
-      grant create any directory,
+      create any directory,
       create trigger
 to ilap_bdd;
 --Completar

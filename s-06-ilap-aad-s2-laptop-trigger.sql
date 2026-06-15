@@ -14,23 +14,23 @@ begin
             /* 1. Inserción en fragmento horizontal correspondiente */
             if v_primer_digito in ('0', '1') then
                 -- NORTE (F1)
-                insert into laptop_f1(laptop_id, laptop_reemplazo_id, num_serie, nombre, descripcion, ram_mb, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
-                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.nombre, :new.descripcion, :new.ram_mb, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
+                insert into laptop_f1(laptop_id, laptop_reemplazo_id, num_serie, cantidad_ram, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
+                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.cantidad_ram, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
                 
             elsif v_primer_digito in ('2', '3') then
                 -- SUR (F2)
-                insert into laptop_f2(laptop_id, laptop_reemplazo_id, num_serie, nombre, descripcion, ram_mb, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
-                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.nombre, :new.descripcion, :new.ram_mb, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
+                insert into laptop_f2(laptop_id, laptop_reemplazo_id, num_serie, cantidad_ram, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
+                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.cantidad_ram, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
                 
             elsif v_primer_digito in ('4', '5') then
                 -- OESTE (F3)
-                insert into laptop_f3(laptop_id, laptop_reemplazo_id, num_serie, nombre, descripcion, ram_mb, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
-                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.nombre, :new.descripcion, :new.ram_mb, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
+                insert into laptop_f3(laptop_id, laptop_reemplazo_id, num_serie, cantidad_ram, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
+                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.cantidad_ram, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
                 
             elsif v_primer_digito in ('6', '7', '8', '9') then
                 -- ESTE (F4)
-                insert into laptop_f4(laptop_id, laptop_reemplazo_id, num_serie, nombre, descripcion, ram_mb, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
-                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.nombre, :new.descripcion, :new.ram_mb, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
+                insert into laptop_f4(laptop_id, laptop_reemplazo_id, num_serie, cantidad_ram, caracteristicas_extras, tipo_procesador_id, tipo_tarjeta_video_id, tipo_almacenamiento_id, tipo_monitor_id) 
+                values (:new.laptop_id, :new.laptop_reemplazo_id, :new.num_serie, :new.cantidad_ram, :new.caracteristicas_extras, :new.tipo_procesador_id, :new.tipo_tarjeta_video_id, :new.tipo_almacenamiento_id, :new.tipo_monitor_id);
                 
             else
                 -- Si no es un dígito entre 0 y 9, no cumple con la fragmentación primaria
