@@ -21,8 +21,8 @@ prompt Creando vista SERVICIO_LAPTOP (FACTURA F1 es local)
 create or replace view servicio_laptop as
 select num_servicio, sucursal_id, laptop_id, diagnostico, importe, factura from servicio_laptop_f1
 union all
-select num_servicio, sucursal_id, laptop_id, diagnostico, importe, get_remote_serv_lap_f2_by_id(num_servicio, sucursal_id) as factura from servicio_laptop_f2
+select num_servicio, sucursal_id, laptop_id, diagnostico, importe, get_remote_serv_lap_f2_by_id(num_servicio,sucursal_id, laptop_id) as factura from servicio_laptop_f2
 union all
-select num_servicio, sucursal_id, laptop_id, diagnostico, importe, get_remote_serv_lap_f3_by_id(num_servicio, sucursal_id) as factura from servicio_laptop_f3
+select num_servicio, sucursal_id, laptop_id, diagnostico, importe, get_remote_serv_lap_f3_by_id(num_servicio,sucursal_id, laptop_id) as factura from servicio_laptop_f3
 union all
-select num_servicio, sucursal_id, laptop_id, diagnostico, importe, get_remote_serv_lap_f4_by_id(num_servicio, sucursal_id) as factura from servicio_laptop_f4;
+select num_servicio, sucursal_id, laptop_id, diagnostico, importe, get_remote_serv_lap_f4_by_id(num_servicio,sucursal_id, laptop_id) as factura from servicio_laptop_f4;

@@ -8,6 +8,10 @@ declare
 begin
     case
         when inserting then
+if :new.es_taller not in (0, 1) or :new.es_venta not in (0, 1) then
+                -- Usamos exactamente el -20010 que pide el script
+                raise_application_error(-20010, 'Error: Las banderas es_taller y es_venta deben ser 0 o 1.');
+            end if;
             select count(*) into v_count from sucursal_f1 where sucursal_id = :new.sucursal_id;
             if v_count > 0 then
                 insert into sucursal_taller_f1(sucursal_id, telefono_atencion, dia_descanso) values (:new.sucursal_id, :new.telefono_atencion, :new.dia_descanso);

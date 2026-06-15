@@ -8,6 +8,7 @@ declare
 begin
     case
         when inserting then
+
             -- 1. LOCAL: Busca en el Norte (F1)
             select count(*) into v_count from sucursal_f1 where sucursal_id = :new.sucursal_id;
             if v_count > 0 then

@@ -84,3 +84,5 @@ Prompt cargando servicio_laptop (con datos BLOB)
 @carga-inicial/servicio_laptop-2-empty-blob.sql
 
 Prompt Carga de datos completa. Haciendo commit!
+commit;
+exit

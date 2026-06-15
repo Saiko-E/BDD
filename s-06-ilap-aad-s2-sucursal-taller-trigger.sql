@@ -1,6 +1,5 @@
 --@Autor: Erick Nava Santiago y Arturo Alfaro Dominguez
 --@Descripción: Trigger DML para SUCURSAL_TALLER (Nodo Sur - aadbdd_s2)
-
 create or replace trigger t_dml_sucursal_taller
 instead of insert or update or delete on sucursal_taller
 declare
@@ -8,6 +7,7 @@ declare
 begin
     case
         when inserting then
+
             -- 1. LOCAL: Busca en el Sur (F4)
             select count(*) into v_count from sucursal_f4 where sucursal_id = :new.sucursal_id;
             if v_count > 0 then

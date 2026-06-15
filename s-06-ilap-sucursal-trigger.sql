@@ -7,6 +7,21 @@ declare
 begin
     case
         when inserting then
+            
+            if :new.es_taller not in (0, 1) or :new.es_venta not in (0, 1) then
+                raise_application_error(-20010, 'Error: Las banderas es_taller y es_venta deben ser 0 o 1.');
+            end if;
+
+            -- Regla B: No pueden ser ambas cero
+            if :new.es_taller = 0 and :new.es_venta = 0 then
+                raise_application_error(-20010, 'Error: La sucursal debe ser taller o venta, no puede tener ambas en 0.');
+            end if;
+
+            -- Regla C: La zona en la clave debe ser válida (NO, EA, WS, SO)
+            if substr(:new.clave, 3, 2) not in ('NO', 'EA', 'WS', 'SO') then
+                raise_application_error(-20010, 'Error: La zona en la clave de la sucursal es invalida.');
+            end if;
+
             -- Regla 1: Ambas funciones (venta y taller) O zona 'NO' van al Norte (F1)
             if (:new.es_venta = '1' and :new.es_taller = '1') or substr(:new.clave, 3, 2) = 'NO' then
                 insert into sucursal_f1(sucursal_id, es_venta, es_taller, clave, nombre, latitud, longitud, url) 

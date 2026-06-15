@@ -43,23 +43,23 @@ prompt =========================================================
 
 -- FUNCIÓN FRAGMENTO 1 (Norte)
 create or replace function get_remote_serv_lap_f1_by_id(
-    p_num_servicio in number, p_sucursal_id in number
+    p_num_servicio in number, p_sucursal_id in number, p_laptop_id in number
 ) return blob is
     pragma autonomous_transaction;
     v_temp_blob blob;
 begin
     delete from ts_servicio_laptop_f1;
     
-    insert into ts_servicio_laptop_f1(num_servicio, sucursal_id, factura)
-    select num_servicio, sucursal_id, factura
+    insert into ts_servicio_laptop_f1(num_servicio, sucursal_id,laptop_id, factura)
+    select num_servicio, sucursal_id, laptop_id, factura
     from servicio_laptop_f1
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     select factura into v_temp_blob
     from ts_servicio_laptop_f1
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     delete from ts_servicio_laptop_f1;
     commit;
@@ -74,23 +74,23 @@ show errors
 
 -- FUNCIÓN FRAGMENTO 2 (Este)
 create or replace function get_remote_serv_lap_f2_by_id(
-    p_num_servicio in number, p_sucursal_id in number
+    p_num_servicio in number, p_sucursal_id in number, p_laptop_id in number
 ) return blob is
     pragma autonomous_transaction;
     v_temp_blob blob;
 begin
     delete from ts_servicio_laptop_f2;
     
-    insert into ts_servicio_laptop_f2(num_servicio, sucursal_id, factura)
-    select num_servicio, sucursal_id, factura
+    insert into ts_servicio_laptop_f2(num_servicio, sucursal_id, laptop_id, factura)
+    select num_servicio, sucursal_id,laptop_id, factura
     from servicio_laptop_f2
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     select factura into v_temp_blob
     from ts_servicio_laptop_f2
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     delete from ts_servicio_laptop_f2;
     commit;
@@ -105,23 +105,23 @@ show errors
 
 -- FUNCIÓN FRAGMENTO 3 (Oeste)
 create or replace function get_remote_serv_lap_f3_by_id(
-    p_num_servicio in number, p_sucursal_id in number
+    p_num_servicio in number, p_sucursal_id in number, p_laptop_id in number
 ) return blob is
     pragma autonomous_transaction;
     v_temp_blob blob;
 begin
     delete from ts_servicio_laptop_f3;
     
-    insert into ts_servicio_laptop_f3(num_servicio, sucursal_id, factura)
-    select num_servicio, sucursal_id, factura
+    insert into ts_servicio_laptop_f3(num_servicio, sucursal_id,laptop_id, factura)
+    select num_servicio, sucursal_id,laptop_id, factura
     from servicio_laptop_f3
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     select factura into v_temp_blob
     from ts_servicio_laptop_f3
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     delete from ts_servicio_laptop_f3;
     commit;
@@ -136,23 +136,23 @@ show errors
 
 -- FUNCIÓN FRAGMENTO 4 (Sur)
 create or replace function get_remote_serv_lap_f4_by_id(
-    p_num_servicio in number, p_sucursal_id in number
+    p_num_servicio in number, p_sucursal_id in number, p_laptop_id in number
 ) return blob is
     pragma autonomous_transaction;
     v_temp_blob blob;
 begin
     delete from ts_servicio_laptop_f4;
     
-    insert into ts_servicio_laptop_f4(num_servicio, sucursal_id, factura)
-    select num_servicio, sucursal_id, factura
+    insert into ts_servicio_laptop_f4(num_servicio, sucursal_id,laptop_id, factura)
+    select num_servicio, sucursal_id, laptop_id,factura
     from servicio_laptop_f4
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     select factura into v_temp_blob
     from ts_servicio_laptop_f4
     where num_servicio = p_num_servicio
-      and sucursal_id = p_sucursal_id;
+      and laptop_id = p_laptop_id;
       
     delete from ts_servicio_laptop_f4;
     commit;
